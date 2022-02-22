@@ -1,0 +1,5 @@
+#!/bin/bash
+data_dir="/opt/docker/dhcpd/etc/dhcp"
+var_dir="/opt/docker/dhcpd/var/lib/dhcp"
+docker run -d --restart unless-stopped --name dhcpd --init --net host \
+	-v "$data_dir":/data -v "$var_dir":/var mattpublic/dhcpd "$@"
